@@ -57,7 +57,7 @@
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
                                     <input class="form-control" id="password" name="password" type="password"
-                                        required="" placeholder="Username">
+                                        required="" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group mb-3 row">
