@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-body">
                             @if (count($errors))
-                                @foreach ($errors->all as $error)
+                                @foreach ($errors->all() as $error)
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         {{ $error }}
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -18,28 +18,28 @@
                                     </div>
                                 @endforeach
                             @endif
-                            <h4 class="card-title">Change Password</h4>
+                            <h4 class="card-title">Change Password</h4><br><br>
                             <form action="{{ route('store.chpagePassword') }}" method="post">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Old Password</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="password" name="old_password"
-                                            id="example-text-input">
+                                            id="example-text-input" placeholder="Enter old password">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">New Password</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="password" name="new_password"
-                                            id="example-text-input">
+                                            id="example-text-input" placeholder="Enter New password">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Confim Password</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="password" name="confim_pasword"
-                                            id="example-text-input">
+                                            id="example-text-input" placeholder="Confim password">
                                     </div>
                                 </div>
 

@@ -25,7 +25,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('admin/edit','adminEdit')->name('admin.edit');
     Route::post('/admin/update','adminUpdate')->name('store.profile');
     Route::get('/profile/changePassword','changePassword')->name('profile.changePassword');
-    Route::post('/profile/storePassword','storePassword')->name('store.chpagePassword');
+    Route::post('/profile/storePassword','updatePassword')->name('store.chpagePassword');
 
 });
 
