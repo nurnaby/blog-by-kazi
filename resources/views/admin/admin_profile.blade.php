@@ -8,8 +8,9 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="d-flex justify-content-center py-3">
-
-                            <img class="rounded-circle avatar-xl " src="{{ asset('backend/assets/images/small/img-5.jpg') }}"
+                            {{-- <img src="{{ 'upload/admin_image/' . $userdata->profile_image }}" alt=""> --}}
+                            <img class="rounded-circle avatar-xl "
+                                src="{{ !empty($userdata->profile_image) ? url('upload/admin_image/' . $userdata->profile_image) : url('upload/no_image.jpg') }}"
                                 alt="Card image cap">
                         </div>
 
