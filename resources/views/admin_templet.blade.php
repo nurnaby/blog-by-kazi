@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+{{-- 
 <head>
 
     <meta charset="utf-8" />
@@ -32,7 +32,7 @@
     <!-- App Css-->
     <link href=" {{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
-</head>
+</head> --}}
 
 <body data-topbar="dark">
 
