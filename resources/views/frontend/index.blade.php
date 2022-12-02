@@ -17,8 +17,7 @@
                                 Product in the shortest time.</h2>
                             <p class="wow fadeInUp" data-wow-delay=".4s">I'm a Rasalina based product design & visual
                                 designer focused on crafting clean & user‑friendly experiences</p>
-                            <a href="about.html" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">more about
-                                me</a>
+                            <a href="about.html" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">more aboutme</a>
                         </div>
                     </div>
                 </div>

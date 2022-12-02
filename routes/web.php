@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/admin/update','adminUpdate')->name('store.profile');
     Route::get('/profile/changePassword','changePassword')->name('profile.changePassword');
     Route::post('/profile/storePassword','updatePassword')->name('store.chpagePassword');
+
+});
+// Home all route 
+Route::controller(HomeController::class)->group(function(){
+    Route::get('home/slide','HomeSlide')->name('home.slide');
+   
 
 });
 
