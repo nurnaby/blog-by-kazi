@@ -24,11 +24,12 @@ class HomeController extends Controller
 
                 Image::make($image)->resize(623,852)->save('upload/home_slide/'.$name_gen);
                 $save_url = 'upload/home_slide/'.$name_gen;
+
                 Homesilde::findOrFail($HomeSlide_id)->update([
-                    'title' =>"$request->title",
-                    'short_title' =>"$request->short_title",
-                    'video_url' =>"$request->video_url",
-                    'home_sild' =>"$save_url",
+                    'title' =>$request->title,
+                    'short_title' =>$request->short_title,
+                    'video_url' =>$request->video_url,
+                    'home_silde' =>$save_url,
                 ]);
                 $notification = array(
                     'message'=> ' Update Home slide with image successfully',
