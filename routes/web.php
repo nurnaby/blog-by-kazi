@@ -32,6 +32,7 @@ Route::controller(AdminController::class)->group(function(){
 // Home all route 
 Route::controller(HomeController::class)->group(function(){
     Route::get('home/slide','HomeSlide')->name('home.slide');
+    Route::put('update/home/slide','updateHomeSlide')->name('Update.home_slide');
    
 
 });

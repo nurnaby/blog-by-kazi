@@ -11,8 +11,11 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Update Slide</h4>
-                            <form action="{{ route('store.profile') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('Update.home_slide') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('put')
+                                <input class="form-control" type="hidden" name="id" id="example-text-input"
+                                    value="{{ $homeSlide->id }}">
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
@@ -34,7 +37,7 @@
                                             mb-3">
                                     <label for="example-email-input" class="col-sm-2 col-form-label">video Url</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="email" name="video_url" id="example-email-input"
+                                        <input class="form-control" type="text" name="video_url" id="example-email-input"
                                             value="{{ $homeSlide->video_url }}">
                                     </div>
                                 </div>
@@ -58,12 +61,6 @@
                                     value="Update Home slide">
                                 <!-- end row -->
                             </form>
-
-
-
-
-
-
 
                         </div>
                     </div>
