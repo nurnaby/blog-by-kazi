@@ -44,7 +44,7 @@
                                 <div class="row mb-3">
                                     <label for="example-email-input" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" name="home_sild" type="file" id="Image">
+                                        <input class="form-control" name="home_silde" type="file" id="Image">
                                     </div>
                                 </div>
                                 <div class="row
@@ -53,7 +53,7 @@
                                     <div class="col-sm-10">
 
                                         <img id="showImage" class="rounded avatar-xl "
-                                            src="{{ !empty($homeSlide->home_sild) ? url('upload/home_slide/' . $homeSlide->home_sild) : url('upload/no_image.jpg') }}"
+                                            src="{{ !empty($homeSlide->home_silde) ? url($homeSlide->home_silde) : url('upload/no_image.jpg') }}"
                                             alt="Card image cap">
                                     </div>
                                 </div>

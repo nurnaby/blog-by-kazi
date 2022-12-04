@@ -18,17 +18,17 @@ class HomeController extends Controller
     
     public function updateHomeSlide(Request $request){
             $HomeSlide_id = $request->id;
-            If($request->file('home_sild')){
-                $image = $request->file('home_sild');
+            If($request->file('home_silde')){
+                $image = $request->file('home_silde');
                 $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
                 Image::make($image)->resize(623,852)->save('upload/home_slide/'.$name_gen);
                 $save_url = 'upload/home_slide/'.$name_gen;
                 Homesilde::findOrFail($HomeSlide_id)->update([
-                    'title' =>"$request->title",
-                    'short_title' =>"$request->short_title",
-                    'video_url' =>"$request->video_url",
-                    'home_sild' =>"$save_url",
+                    'title' =>$request->title,
+                    'short_title' =>$request->short_title,
+                    'video_url' =>$request->video_url,
+                    'home_silde' =>$save_url,
                 ]);
                 $notification = array(
                     'message'=> ' Update Home slide with image successfully',
