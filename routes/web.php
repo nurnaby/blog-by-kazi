@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\aboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,14 @@ Route::controller(AdminController::class)->group(function(){
 Route::controller(HomeController::class)->group(function(){
     Route::get('home/slide','HomeSlide')->name('home.slide');
     Route::put('update/home/slide','updateHomeSlide')->name('Update.home_slide');
+   
+
+});
+// Aboute all route 
+Route::controller(aboutController::class)->group(function(){
+    Route::get('aboute/page','AboutePage')->name('aboute.page');
+    Route::put('aboute/page/update','updatePage')->name('update.abautePage');
+    
    
 
 });

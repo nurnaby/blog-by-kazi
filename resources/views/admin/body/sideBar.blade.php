@@ -27,7 +27,7 @@
                 <span>Aboute Page Setup</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="">Aboute Page</a></li>
+                <li><a href="{{ route('aboute.page') }}">Aboute Page</a></li>
             </ul>
         </li>
 
