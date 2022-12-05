@@ -41,6 +41,11 @@ Route::controller(HomeController::class)->group(function(){
 Route::controller(aboutController::class)->group(function(){
     Route::get('aboute/page','AboutePage')->name('aboute.page');
     Route::put('aboute/page/update','updatePage')->name('update.abautePage');
+    Route::get('about','homeAboute')->name('home.aboute');
+    Route::get('about/multi/image','multiImage')->name('aboute.multi.image');
+    Route::put('aboute/multiImage/store','storeMultiImage')->name('store.multi.image');
+
+
     
    
 

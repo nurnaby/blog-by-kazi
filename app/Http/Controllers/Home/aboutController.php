@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redis;
 use Intervention\Image\Facades\Image;
@@ -52,5 +53,35 @@ class aboutController extends Controller
         }//End else
         
     } // End Method
+
+    public function homeAboute(){
+        $aboutePage = About::find(1);
+        return view('frontend.homeAbout_page',compact('aboutePage'));
+    }// End Method
+
+    public function multiImage(){
+        return view('admin.aboutePage.multiImage');
+    }// End Method
+    public function storeMultiImage(Request $request){
+        $images = $request->file('multi_Image');
+        foreach ($images as $image) {
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+
+            Image::make($image)->resize(220,220)->save('upload/multi_Image/'.$name_gen);
+            $save_url = 'upload/aboute_page/'.$name_gen;
+            About::insert([
+                'aboute_image' =>$save_url,
+                'created_at' =>Carbon::now()
+            ]);
+        } //End of the foreach
+            $notification = array(
+                'message'=> ' multiple  image upload  successfully',
+                'alert-type'=> 'info'
+        );
+       return redirect()->back()->with($notification);
+        
+
+        
+    }// End Method
 
 }

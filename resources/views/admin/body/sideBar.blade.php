@@ -29,6 +29,9 @@
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{ route('aboute.page') }}">Aboute Page</a></li>
             </ul>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('aboute.multi.image') }}">Multiple Image </a></li>
+            </ul>
         </li>
 
 
