@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\About;
+use App\Models\multiImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -58,7 +59,7 @@ class aboutController extends Controller
         $aboutePage = About::find(1);
         return view('frontend.homeAbout_page',compact('aboutePage'));
     }// End Method
-
+//multi image add edit 
     public function multiImage(){
         return view('admin.aboutePage.multiImage');
     }// End Method
@@ -68,9 +69,9 @@ class aboutController extends Controller
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
             Image::make($image)->resize(220,220)->save('upload/multi_Image/'.$name_gen);
-            $save_url = 'upload/aboute_page/'.$name_gen;
-            About::insert([
-                'aboute_image' =>$save_url,
+            $save_url = 'upload/multi_Image/'.$name_gen;
+            multiImage::insert([
+                'multi_Image' =>$save_url,
                 'created_at' =>Carbon::now()
             ]);
         } //End of the foreach
@@ -82,6 +83,38 @@ class aboutController extends Controller
         
 
         
+    }// End Method
+
+    public function allMultiImage(){
+       $allMultiImage = multiImage::all();
+      
+      return view('admin.aboutePage.allMulti_image',compact('allMultiImage'));
+    }// End Method
+    public function EditMultiImage($id){
+       $editMultiImages = multiImage::find($id);
+      
+      return view('admin.aboutePage.EditMulti_image',compact('editMultiImages'));
+    }// End Method
+
+    public function updateMultiImage(Request $request, $id){
+      
+        If($request->file('multi_Image')){
+            $image = $request->file('multi_Image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+
+            Image::make($image)->resize(220,220)->save('upload/multi_Image/'.$name_gen);
+            $save_url = 'upload/multi_Image/'.$name_gen;
+            multiImage::findOrFail($id)->update([
+                
+                'multi_Image' =>$save_url,
+                // 'created_at' =>Carbon::now()
+            ]);
+            $notification = array(
+                'message'=> ' Update Multi image  successfully',
+                'alert-type'=> 'info'
+        );
+       return redirect()->route('all.multi.image')->with($notification);
+        }
     }// End Method
 
 }
