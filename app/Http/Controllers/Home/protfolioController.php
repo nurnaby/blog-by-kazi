@@ -75,4 +75,16 @@ return redirect()->route('all.protfolio')->with($notification);
 
 }//End methode
 
+public function Delete_protfolio($id){
+        $portfolios = protfolio::findOrFail($id);
+        $img =$portfolios->protfolio_image;
+        unlink($img);
+        protfolio::findOrFail($id)->delete();
+        $notification = array(
+            'message'=> ' delete Multi image  successfully',
+            'alert-type'=> 'info'
+        ); 
+        return redirect()->back()->with($notification);
+}
+
 }

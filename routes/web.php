@@ -57,6 +57,8 @@ Route::controller(protfolioController::class)->group(function(){
     Route::put('protfolio/store','store_protfolio')->name('store.portfolio');
     Route::get('protfolio/edit/{id}','Edit_protfolio')->name('edit.protfolio');
     Route::put('protfolio/update','update_protfolio')->name('update.portfolio');
+    Route::get('protfolio/delete/{id}','Delete_protfolio')->name('delete.portfolio');
+
 
 
    
