@@ -45,6 +45,34 @@ class protfolioController extends Controller
             'alert-type'=> 'success'
     );
    return redirect()->route('all.protfolio')->with($notification);
-}
+}//End methode
+
+public function Edit_protfolio($id){
+    $all_portfolios = protfolio::find($id);
+    return view('admin.protfolio.edit_protfolio',compact('all_portfolios'));
+}//End methode
+public function update_protfolio(Request $request){
+    $porfolio_id = $request->id;
+    // $all_portfolios = protfolio::find($porfolio_id);
+
+    $image = $request->file('protfolio_image');
+    $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+
+    Image::make($image)->resize(623,852)->save('upload/portfoli_image/'.$name_gen);
+    $save_url = 'upload/portfoli_image/'.$name_gen;
+    protfolio::findOrFail($porfolio_id)->update([
+        'protfolio_name' =>$request->protfolio_name,
+        'protfolio_title' =>$request->protfolio_title,
+        'protfolio_description' =>$request->protfolio_description,
+        'protfolio_image' =>$save_url,
+        'created_at' => Carbon::now()
+    ]);
+    $notification = array(
+        'message'=> ' Update portfoli successfully',
+        'alert-type'=> 'success'
+);
+return redirect()->route('all.protfolio')->with($notification);
+
+}//End methode
 
 }

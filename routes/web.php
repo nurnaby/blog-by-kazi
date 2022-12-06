@@ -55,6 +55,10 @@ Route::controller(protfolioController::class)->group(function(){
     Route::get('protfolio/add','add_protfolio')->name('add.protfolio');
     Route::get('protfolio/page','All_protfolio')->name('all.protfolio');
     Route::put('protfolio/store','store_protfolio')->name('store.portfolio');
+    Route::get('protfolio/edit/{id}','Edit_protfolio')->name('edit.protfolio');
+    Route::put('protfolio/update','update_protfolio')->name('update.portfolio');
+
+
    
 });
 

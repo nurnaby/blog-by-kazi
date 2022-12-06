@@ -32,10 +32,12 @@
                                             <td>{{ $all_portfolio->protfolio_name }}</td>
                                             <td>{{ $all_portfolio->protfolio_title }}</td>
 
-                                            <td>image</td>
+                                            <td><img src="{{ asset($all_portfolio->protfolio_image) }}"
+                                                    style="width: 60px; height: 50px;"></td>
                                             <td>
-                                                <a href="#" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i> </a>
+                                                <a href="{{ route('edit.protfolio', $all_portfolio->id) }}"
+                                                    class="btn btn-info sm" title="Edit Data"> <i class="fas fa-edit"></i>
+                                                </a>
 
                                                 <a href="#" class="btn btn-danger sm" title="Delete Data"
                                                     id="delete"> <i class="fas fa-trash-alt"></i> </a>
