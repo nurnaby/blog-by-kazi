@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\aboutController;
+use App\Http\Controllers\Home\ProfileController;
+use App\Http\Controllers\Home\protfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,8 @@ Route::controller(AdminController::class)->group(function(){
 Route::controller(HomeController::class)->group(function(){
     Route::get('home/slide','HomeSlide')->name('home.slide');
     Route::put('update/home/slide','updateHomeSlide')->name('Update.home_slide');
-   
-
 });
+
 // Aboute all route 
 Route::controller(aboutController::class)->group(function(){
     Route::get('aboute/page','AboutePage')->name('aboute.page');
@@ -48,13 +48,14 @@ Route::controller(aboutController::class)->group(function(){
     Route::get('edit/multi/image/{id}','EditMultiImage')->name('edit.multi.image');
     Route::put('aboute/multiImage/update/{id}','updateMultiImage')->name('update.multi.image');
     Route::get('delete/multi/image/{id}','DeleteMultiImage')->name('delete.multi.image');
+});
 
-
-
-
-    
+// portfolio all route 
+Route::controller(protfolioController::class)->group(function(){
+    Route::get('protfolio/add','add_protfolio')->name('add.protfolio');
+    Route::get('protfolio/page','All_protfolio')->name('all.protfolio');
+    Route::put('protfolio/store','store_protfolio')->name('store.portfolio');
    
-
 });
 
 
