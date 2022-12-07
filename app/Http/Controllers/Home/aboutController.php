@@ -59,6 +59,7 @@ class aboutController extends Controller
         $aboutePage = About::find(1);
         return view('frontend.homeAbout_page',compact('aboutePage'));
     }// End Method
+
 //multi image add edit 
     public function multiImage(){
         return view('admin.aboutePage.multiImage');
@@ -90,6 +91,7 @@ class aboutController extends Controller
       
       return view('admin.aboutePage.allMulti_image',compact('allMultiImage'));
     }// End Method
+    
     public function EditMultiImage($id){
        $editMultiImages = multiImage::find($id);
       

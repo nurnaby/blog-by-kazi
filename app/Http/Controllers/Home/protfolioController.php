@@ -31,7 +31,7 @@ class protfolioController extends Controller
         $image = $request->file('protfolio_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(623,852)->save('upload/portfoli_image/'.$name_gen);
+        Image::make($image)->resize(1020,519)->save('upload/portfoli_image/'.$name_gen);
         $save_url = 'upload/portfoli_image/'.$name_gen;
         protfolio::insert([
             'protfolio_name' =>$request->protfolio_name,
@@ -58,7 +58,7 @@ public function update_protfolio(Request $request){
     $image = $request->file('protfolio_image');
     $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-    Image::make($image)->resize(623,852)->save('upload/portfoli_image/'.$name_gen);
+    Image::make($image)->resize(1020,519)->save('upload/portfoli_image/'.$name_gen);
     $save_url = 'upload/portfoli_image/'.$name_gen;
     protfolio::findOrFail($porfolio_id)->update([
         'protfolio_name' =>$request->protfolio_name,
@@ -85,6 +85,10 @@ public function Delete_protfolio($id){
             'alert-type'=> 'info'
         ); 
         return redirect()->back()->with($notification);
+}//End methode
+public function details_protfolio($id){
+    $portfolio = protfolio::find($id);
+    return view('frontend.portfolio_details',compact('portfolio'));
 }
 
 }

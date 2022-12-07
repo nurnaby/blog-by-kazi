@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\BlogCategory;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\aboutController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\protfolioController;
+use App\Http\Controllers\Home\BlogCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,10 +60,21 @@ Route::controller(protfolioController::class)->group(function(){
     Route::get('protfolio/edit/{id}','Edit_protfolio')->name('edit.protfolio');
     Route::put('protfolio/update','update_protfolio')->name('update.portfolio');
     Route::get('protfolio/delete/{id}','Delete_protfolio')->name('delete.portfolio');
+    Route::get('protfolio/details/{id}','details_protfolio')->name('portfolio.details');
+
+});
+// Blog all route 
+Route::controller(BlogCategoryController::class)->group(function(){
+    Route::get('all/blog/category','AllBlogCategory')->name('all.blog.category');
+    Route::get('add/blog/category','AddBlogCategory')->name('add.blog.category');
+    Route::put('store/blog/category','storeBlogCategory')->name('store.blog.category');
+    Route::get('edit/blog/category/{id}','EditBlogCategory')->name('edit.blogCategory');
+    Route::put('update/blog/category','UpdateBlogCategory')->name('update.blog.category');
+    Route::get('delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blogCatogory');
 
 
 
-   
+    
 });
 
 
