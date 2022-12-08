@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\BlogCategory;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\aboutController;
 use App\Http\Controllers\Home\ProfileController;
@@ -63,7 +64,7 @@ Route::controller(protfolioController::class)->group(function(){
     Route::get('protfolio/details/{id}','details_protfolio')->name('portfolio.details');
 
 });
-// Blog all route 
+// Blog Category all route 
 Route::controller(BlogCategoryController::class)->group(function(){
     Route::get('all/blog/category','AllBlogCategory')->name('all.blog.category');
     Route::get('add/blog/category','AddBlogCategory')->name('add.blog.category');
@@ -72,8 +73,10 @@ Route::controller(BlogCategoryController::class)->group(function(){
     Route::put('update/blog/category','UpdateBlogCategory')->name('update.blog.category');
     Route::get('delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blogCatogory');
 
-
-
+});
+// Blog all route 
+Route::controller(BlogController::class)->group(function(){
+    Route::get('all/blog','AllBlog')->name('all.blog');
     
 });
 
