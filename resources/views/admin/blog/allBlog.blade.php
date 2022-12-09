@@ -27,7 +27,7 @@
 
 
                                 <tbody>
-                                    @foreach ($Blogs as $key => $Blog)
+                                    @foreach ($Blogs as $key => $blog)
                                         <tr>
                                             <td>{{ ++$key }}</td>
                                             <td>{{ $blog->blog_category_id }}</td>
@@ -37,7 +37,7 @@
                                             <td><img src="{{ asset($blog->blog_image) }}"
                                                     style="width: 60px; height: 50px;"></td>
                                             <td>
-                                                <a href="{{ route('edit.protfolio', $blog->id) }}" class="btn btn-info sm"
+                                                <a href="{{ route('edit.blog', $blog->id) }}" class="btn btn-info sm"
                                                     title="Edit Data"> <i class="fas fa-edit"></i>
                                                 </a>
 
