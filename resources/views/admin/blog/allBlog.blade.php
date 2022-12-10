@@ -24,13 +24,11 @@
 
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
                                     @foreach ($Blogs as $key => $blog)
                                         <tr>
                                             <td>{{ ++$key }}</td>
-                                            <td>{{ $blog->blog_category_id }}</td>
+                                            <td>{{ $blog['category']['blog_category'] }}</td>
                                             <td>{{ $blog->blog_title }}</td>
                                             <td>{{ $blog->blog_tags }}</td>
 
@@ -41,9 +39,9 @@
                                                     title="Edit Data"> <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <a href="{{ route('delete.portfolio', $blog->id) }}"
-                                                    class="btn btn-danger sm" title="Delete Data" id="delete"> <i
-                                                        class="fas fa-trash-alt"></i> </a>
+                                                <a href="{{ route('delete.blog', $blog->id) }}" class="btn btn-danger sm"
+                                                    title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </td>
 
                                         </tr>

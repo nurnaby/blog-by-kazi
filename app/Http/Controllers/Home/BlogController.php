@@ -32,17 +32,14 @@ class BlogController extends Controller
         $image = $request->file('blog_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->resize(1020,519)->save('upload/blog_image/'.$name_gen);
+        Image::make($image)->resize(430,327)->save('upload/blog_image/'.$name_gen);
         $save_url = 'upload/blog_image/'.$name_gen;
         
-        $image = $request->file('blog_image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
-        Image::make($image)->resize(1020,519)->save('upload/portfoli_image/'.$name_gen);
-        $save_url = 'upload/portfoli_image/'.$name_gen;
+        
         Blog::insert([
             'blog_category_id' =>$request->blog_category_id,
             'blog_title' =>$request->blog_title,
+            'blog_description' =>$request->blog_description,
             'blog_tags' =>$request->blog_tags,
             'blog_image' =>$save_url,
             'created_at' => Carbon::now()
@@ -60,7 +57,63 @@ class BlogController extends Controller
         $blogCategorys = BlogCategory::orderBy('blog_category','ASC')->get();
 
         return view('admin.blog.editBlog',compact('Blogs','blogCategorys'));
-    }//
+    }//End Method
+
+    public function updateBlog(Request $request){
+        
+        $blog_id = $request->id;
+       if($request->file('blog_image')){
+        $image = $request->file('blog_image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+    
+        Image::make($image)->resize(430,327)->save('upload/blog_image/'.$name_gen);
+        $save_url = 'upload/blog_image/'.$name_gen;
+        Blog::findOrFail($blog_id)->update([
+            'blog_category_id' =>$request->blog_category_id,
+            'blog_title' =>$request->blog_title,
+            'blog_description' =>$request->blog_description,
+            'blog_tags' =>$request->blog_tags,
+            'blog_image' =>$save_url,
+            'created_at' => Carbon::now()
+        ]);
+       }else{
+        Blog::findOrFail($blog_id)->update([
+            'blog_category_id' =>$request->blog_category_id,
+            'blog_title' =>$request->blog_title,
+            'blog_description' =>$request->blog_description,
+            'blog_tags' =>$request->blog_tags,
+           
+            'created_at' => Carbon::now()
+        ]);
+
+       }
+    
+        
+        $notification = array(
+            'message'=> ' Update blog successfully',
+            'alert-type'=> 'success'
+    );
+    return redirect()->route('all.blog')->with($notification);
+        
+    }//End Method
+    public function Delete_Blog($id){
+        $Blogs = Blog::find($id);
+        $image =$Blogs->blog_image;
+        unlink($image);
+        Blog::findOrFail($id)->delete();
+        $notification = array(
+            'message'=> ' delete Blog  successfully',
+            'alert-type'=> 'info'
+        ); 
+        return redirect()->back()->with($notification);
+
+        
+    }//End Method
+    public function Blog_details($id){
+        $Blogs = Blog::findOrFail($id);
+        return view('frontend.blog_detials',compact('Blogs'));
+    }//End Method
+
 
 
 }

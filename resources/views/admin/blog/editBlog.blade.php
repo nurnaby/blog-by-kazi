@@ -18,10 +18,10 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Edit Blog</h4>
-                            <form action="{{ route('store.blog') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('update.blogs') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-
+                                <input type="hidden" value="{{ $Blogs->id }}" name="id">
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Blog Title</label>
                                     <div class="col-sm-10">
@@ -37,7 +37,9 @@
                                             name="blog_category_id">
                                             <option selected="">Open this select menu</option>
                                             @foreach ($blogCategorys as $blogCategory)
-                                                <option value="{{ $blogCategory->id }}">{{ $blogCategory->blog_category }}
+                                                <option value="{{ $blogCategory->id }}"
+                                                    {{ $blogCategory->id == $Blogs->blog_category_id ? 'selected' : '' }}>
+                                                    {{ $blogCategory->blog_category }}
                                                 </option>
                                             @endforeach
 
@@ -73,11 +75,11 @@
                                     <label for="example-email-input" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
 
-                                        <img id="showImage" class="rounded avatar-xl "
-                                            src="{{ url('upload/no_image.jpg') }}" alt="Card image cap">
+                                        <img id="showImage" class="rounded avatar-xl " src="{{ asset($Blogs->blog_image) }}"
+                                            alt="Card image cap">
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Add  Blog">
+                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Blog">
                                 <!-- end row -->
                             </form>
 

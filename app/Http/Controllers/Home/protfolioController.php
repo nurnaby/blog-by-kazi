@@ -28,6 +28,7 @@ class protfolioController extends Controller
             'protfolio_name.required'=> 'protfolio name is Required',
             'protfolio_title.required'=> 'protfolio title is Required'
         ]);
+        
         $image = $request->file('protfolio_image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
