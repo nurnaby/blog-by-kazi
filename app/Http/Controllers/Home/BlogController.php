@@ -110,8 +110,18 @@ class BlogController extends Controller
         
     }//End Method
     public function Blog_details($id){
-        $Blogs = Blog::findOrFail($id);
-        return view('frontend.blog_detials',compact('Blogs'));
+        $data['all_Category'] = BlogCategory::orderBy('blog_category','ASC')->get();
+        $data['all_blog'] = Blog::latest()->limit(3)->get();
+        $data['Blogs'] = Blog::findOrFail($id);
+        return view('frontend.blog_detials',$data);
+    }//End Method
+    public function CategoryBlog($id){
+        $data['all_Category'] = BlogCategory::orderBy('blog_category','ASC')->get();
+        $data['all_blog'] = Blog::latest()->limit(3)->get();
+        // $data['Blogs'] = Blog::findOrFail($id);
+        $data['categoryBlog'] = Blog::where('blog_category_id',$id)->orderBy('id','DESC')->get();
+       
+        return view('frontend.cat_blog_delails',$data);
     }//End Method
 
 

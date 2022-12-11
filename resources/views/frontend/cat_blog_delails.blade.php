@@ -8,7 +8,8 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 col-md-10">
                         <div class="breadcrumb__wrap__content">
-                            <h2 class="title">{{ $Blogs->blog_title }}</h2>
+                            <h2 class="title">{{ $categoryBlog['category']['blog_category'] }}</h2>
+
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -39,55 +40,53 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="standard__blog__post">
-                            <div class="standard__blog__thumb">
-                                <img src="{{ asset($Blogs->blog_image) }}" alt="">
-                            </div>
-                            <div class="blog__details__content services__details__content">
-                                <ul class="blog__post__meta">
-                                    <li><i
-                                            class="fal fa-calendar-alt"></i>{{ Carbon\Carbon::parse($Blogs->created_at)->diffForHumans() }}
-                                    </li>
+                            @foreach ($categoryBlog as $item)
+                                <div class="standard__blog__thumb">
+                                    <img src="{{ asset($item->blog_image) }}" alt="">
+                                </div>
+                                <div class="blog__details__content services__details__content">
+                                    <ul class="blog__post__meta">
+                                        <li><i
+                                                class="fal fa-calendar-alt"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}
+                                        </li>
 
 
-                                </ul>
-                                <h2 class="title">{{ $Blogs->blog_title }}</h2>
-                                <p>{{ $Blogs->blog_description }}</p>
+                                    </ul>
+                                    <h2 class="title">{{ $item->blog_title }}</h2>
+                                    <p>{{ $item->blog_description }}</p>
 
-                                <ul class="services__details__list">
-                                    <li>Achieving effectiveness,</li>
-                                    <li>Perceiving and utilizing opportunities,</li>
-                                    <li>Mobilising resources,</li>
-                                    <li>Securing an advantageous position,</li>
-                                    <li>Meeting challenges and threats,</li>
-                                    <li>Directing efforts and behaviour and</li>
-                                    <li>Gaining command over the situation.</li>
-                                </ul>
-                                <p>A business strategy is a set of competitive moves and actions that a business uses to
-                                    attract customers, compete successfully, strengthening performance, and achieve
-                                    organizational goals. It outlines how business should be carried out to reach the
-                                    desired ends</p>
-                                <div class="services__details__img">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <img src="{{ asset('front_end/assets/img/blog/blog_details_img01.jpg') }}"
-                                                alt="">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <img src="{{ asset('front_end/assets/img/blog/blog_details_img02.jpg') }}"
-                                                alt="">
+
+                                    <p>A business strategy is a set of competitive moves and actions that a business uses to
+                                        attract customers, compete successfully, strengthening performance, and achieve
+                                        organizational goals. It outlines how business should be carried out to reach the
+                                        desired ends</p>
+                                    <div class="services__details__img">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <img src="{{ asset('front_end/assets/img/blog/blog_details_img01.jpg') }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <img src="{{ asset('front_end/assets/img/blog/blog_details_img02.jpg') }}"
+                                                    alt="">
+                                            </div>
                                         </div>
                                     </div>
+                                    <h2 class="small-title">Nature of Business Strategy</h2>
+                                    <p>A business strategy is a combination of proactive actions on the part of management,
+                                        for
+                                        the purpose of enhancing the company’s market position and overall performance and
+                                        reactions to unexpected developments and new market.</p>
+                                    <p>The maximum part of the company’s present strategy is a result of formerly initiated
+                                        actions and business approaches, but when market conditions take an unanticipated
+                                        turn,
+                                        the company requires a strategic reaction to cope with contingencies. Hence, for
+                                        unforeseen development, a part of the business strategy is formulated as a reasoned
+                                        response nature of business strategy.</p>
                                 </div>
-                                <h2 class="small-title">Nature of Business Strategy</h2>
-                                <p>A business strategy is a combination of proactive actions on the part of management, for
-                                    the purpose of enhancing the company’s market position and overall performance and
-                                    reactions to unexpected developments and new market.</p>
-                                <p>The maximum part of the company’s present strategy is a result of formerly initiated
-                                    actions and business approaches, but when market conditions take an unanticipated turn,
-                                    the company requires a strategic reaction to cope with contingencies. Hence, for
-                                    unforeseen development, a part of the business strategy is formulated as a reasoned
-                                    response nature of business strategy.</p>
-                            </div>
+                            @endforeach
+
+
                             <div class="blog__details__bottom">
                                 <ul class="blog__details__tag">
                                     <li class="title">Tag:</li>
@@ -119,7 +118,8 @@
                                                             alt=""></a>
                                                 </div>
                                                 <div class="blog__next__prev__content">
-                                                    <h5 class="title"><a href="blog-details.html">Digital Marketing Agency
+                                                    <h5 class="title"><a href="blog-details.html">Digital Marketing
+                                                            Agency
                                                             Pricing Guide.</a></h5>
                                                 </div>
                                             </div>
@@ -237,12 +237,14 @@
                                     <textarea name="message" id="message" placeholder="Enter your Massage*"></textarea>
                                     <div class="form-grp checkbox-grp">
                                         <input type="checkbox" id="checkbox">
-                                        <label for="checkbox">Save my name, email, and website in this browser for the next
+                                        <label for="checkbox">Save my name, email, and website in this browser for the
+                                            next
                                             time I comment.</label>
                                     </div>
                                     <button type="submit" class="btn">post a comment</button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -326,6 +328,7 @@
                             </div>
                         </aside>
                     </div>
+
                 </div>
             </div>
         </section>
