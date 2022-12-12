@@ -83,6 +83,7 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('edit/blog/{id}','Edit_Blog')->name('edit.blog');
     Route::put('update/blog','updateBlog')->name('update.blogs');
     Route::get('delete/blog/{id}','Delete_Blog')->name('delete.blog');
+
     Route::get('/blog{id}','Blog_details')->name('blog.details');
     Route::get('/category{id}','CategoryBlog')->name('cagegory.post');
     
