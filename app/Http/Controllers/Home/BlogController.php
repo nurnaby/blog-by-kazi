@@ -118,7 +118,7 @@ class BlogController extends Controller
     public function CategoryBlog($id){
         $data['all_Category'] = BlogCategory::orderBy('blog_category','ASC')->get();
         $data['all_blog'] = Blog::latest()->limit(3)->get();
-        // $data['Blogs'] = Blog::findOrFail($id);
+        $data['BlogCategory'] = BlogCategory::findOrFail($id);
         $data['categoryBlog'] = Blog::where('blog_category_id',$id)->orderBy('id','DESC')->get();
        
         return view('frontend.cat_blog_delails',$data);

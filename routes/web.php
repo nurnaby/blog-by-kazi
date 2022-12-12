@@ -6,6 +6,7 @@ use App\Http\Controllers\Home\BlogCategory;
 use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\aboutController;
+use App\Http\Controllers\Home\contactController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\protfolioController;
 use App\Http\Controllers\Home\BlogCategoryController;
@@ -84,11 +85,14 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('delete/blog/{id}','Delete_Blog')->name('delete.blog');
     Route::get('/blog{id}','Blog_details')->name('blog.details');
     Route::get('/category{id}','CategoryBlog')->name('cagegory.post');
-
-
-
-
     
+});
+// contact all route 
+Route::controller(contactController::class)->group(function(){
+    Route::get('contact','ContactMe')->name('contact.me');
+    Route::post('store/contact','storeContactMe')->name('store.contcat');
+    Route::get('all/contact','All_ContactMe')->name('all.message');
+    Route::get('delete/contact/{id}','delete_ContactMe')->name('delete.message');
 });
 
 

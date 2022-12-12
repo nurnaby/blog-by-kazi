@@ -73,6 +73,16 @@
             </ul>
         </li>
 
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-account-circle-line"></i>
+                <span>Contact Me </span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('all.message') }}">All Contact Message </a></li>
+            </ul>
+        </li>
+
 
     </ul>
 </div>
